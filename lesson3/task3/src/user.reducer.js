@@ -1,4 +1,4 @@
-import { SET, REMOVE } from './users.actions';
+import { SET, REMOVE } from './user.actions';
 
 
 export const usersReducer = (state = null, action) => {
