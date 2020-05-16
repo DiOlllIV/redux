@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Pagination = ({goPrev, goNext, currentPage, totalItems}) => {
-console.log(goPrev())
+    
     return (
         <div className="pagination">
                 <button className="btn"

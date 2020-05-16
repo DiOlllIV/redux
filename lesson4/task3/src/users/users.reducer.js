@@ -1,8 +1,7 @@
 import {NEXT_PAGE, PREV_PAGE} from './users.actions';
 
 const initialState = {
-    users: {
-        usersList: [
+    usersList: [
             {
                 id: 'id-0',
                 age: 21,
@@ -59,8 +58,8 @@ const initialState = {
                 name: 'Anna',
             },
         ],
+        
         currentPage: 0
-    }
 };
 
 const usersReducer = (state = initialState, action) => { 
@@ -69,13 +68,13 @@ const usersReducer = (state = initialState, action) => {
         case NEXT_PAGE:
             return {
                 ...state,
-                currentPage: state.users.currentPage + 1,
+                currentPage: state.currentPage + 1,
             };
 
         case PREV_PAGE:
             return {
                 ...state,
-                currentPage: state.users.currentPage - 1,
+                currentPage: state.currentPage - 1,
             };
 
         default:
