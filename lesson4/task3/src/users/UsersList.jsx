@@ -1,62 +1,41 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import User from './User';
 import Pagination from './Pagination';
+import { connect } from 'react-redux';
+import { goNext, goPrev } from './users.actions';
 
-class UsersList extends Component {
-    constructor(props) {
-        super(props);
-        this.state ={
-            currentPage: 0,
-            itemsPerPage: 3,
-        };
-    }
-
-    goPrev = () => {
-        this.setState({
-            currentPage: this.state.currentPage - 1,
-        })
-    };
-
-    goNext = () => {
-        this.setState({
-            currentPage: this.state.currentPage + 1,
-        })
-    }
-
-    render() {
-        console.log(this.props)
-        const {users} = this.props;
-        const {currentPage, itemsPerPage} = this.state;
-        const start = currentPage * itemsPerPage;
-        const displayedUsers = users.slice(start, start + itemsPerPage);
-
-        return (
-            <div>
-                <Pagination
-                    goPrev={this.goPrev}
-                    goNext={this.goNext}
-                    currentPage={currentPage}
-                    totalItems={users.length}
-                    itemsPerPage={itemsPerPage}
-                />
-                <ul>
-                    {displayedUsers.map((user) => 
-                        <User key={user.id} user={user} />
-                    )}
-                </ul>
-            </div>
-        ); 
-    }
+const UsersList = ({users, currentPage, goNext, goPrev}) => {
+    console.log(currentPage)
+    return (
+        <div>
+            <Pagination
+                goPrev={goPrev}
+                goNext={goNext}
+                currentPage={currentPage}
+                totalItems={users.length}
+            />
+            <ul className="users">
+                {users.slice(currentPage * 3, currentPage * 3 + 3).map((user) => 
+                    <User key={user.id} name={user.name} age={user.age} />
+                )}
+            </ul>
+        </div>
+    ); 
 };
 
 const mapState = state => {
     return {
-        users: state.users,
+        users: state.users.usersList,
+        currentPage: state.users.currentPage,
     };
 };
 
-const connector = connect(mapState);
+const mapDispatch = {
+    goNext,
+    goPrev,
+};
+
+const connector = connect(mapState, mapDispatch);
 const ConnectedUsers = connector(UsersList);
 
 export default ConnectedUsers;

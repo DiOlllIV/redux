@@ -1,25 +1,25 @@
 import React from 'react';
 
-const Pagination = ({goPrev, goNext, currentPage, totalItems, itemsPerPage}) => {
-    const prevPage = currentPage > 0;
-    const nextPage = currentPage < Math.ceil(totalItems / itemsPerPage) - 1;
+const Pagination = ({goPrev, goNext, currentPage, totalItems}) => {
+    const prevBtn = currentPage + 1 !== 1;
+    const nextBtn = (currentPage + 1) * 3 < totalItems;
 
     return (
         <div className="pagination">
                 <button className="btn"
                     onClick={goPrev}
-                    disabled={!prevPage}
+                    disabled={!prevBtn}
                 >
-                    {prevPage && "←"}
+                    {prevBtn && "←"}
                 </button>
                 <span className="pagination__page">
                     {currentPage + 1}
                 </span>
                 <button className="btn"
                     onClick={goNext}
-                    disabled={!nextPage}
+                    disabled={!nextBtn}
                 >
-                    {nextPage && "→"}
+                    {nextBtn && "→"}
                 </button>
         </div>
     );

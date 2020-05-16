@@ -1,14 +1,14 @@
 import React from 'react';
 
-const User =({user}) => {
+const User =({name, age}) => {
     return (
         <li className="user"
         >
             <span className="user__name">
-                {user.name}
+                {name}
             </span>
             <span className="user__age">
-                {user.age}
+                {age}
             </span>
         </li>)
 };
