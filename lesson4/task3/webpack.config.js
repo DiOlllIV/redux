@@ -14,6 +14,10 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
+          test: /.js?$/,
+          use: ["babel-loader"]
+        },
+        {
           test: /.js?x$/,
           use: ["babel-loader"]
         },
