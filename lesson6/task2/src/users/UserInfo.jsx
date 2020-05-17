@@ -22,7 +22,7 @@ const UserInfo = ({ userData, isFetching }) => {
                     {userData.name}
                 </span>
                 <span className="user__location">
-                    {userData.location}
+                    {`from ${userData.location}`}
                 </span>
             </div>
         </div>
