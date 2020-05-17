@@ -1,3 +1,5 @@
+// index.scss
+
 * {
     box-sizing: border-box;
 }
@@ -20,7 +22,6 @@ body {
 
 .user {
     margin: 8px;
-    width: 150px;
     display: flex;
     
     &__age {
@@ -30,21 +31,32 @@ body {
     }
 }
 
-.pagination {
+.filter {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.btn {
     height: 32px;
-    color: #fff;
-    border-radius: 8px;
-    width: 64px;
-    outline: none;
-    border: none;
-    text-transform: uppercase;
-    padding: 8px;
-    cursor: pointer;
-    background-color: green;
+
+    &__input {
+        flex: 1;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        border: 3px solid #ff7f50;
+        border-left: none;
+        padding: 8px;
+        font-size: 24px;
+        outline: none;
+    }
+
+    &__count {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        border: 3px solid #ff7f50;
+        border-right: none;
+        width: 40px;
+        line-height: 28px;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 700;
+        background: #ff7f50;
+        color: #fff;
+    }
 }
