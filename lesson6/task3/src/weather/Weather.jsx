@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import PropTypes, { array } from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { weatherDataSelector } from './weather.selectors';
 import * as weatherActions from './weather.actions';
