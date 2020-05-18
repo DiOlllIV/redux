@@ -1,5 +1,4 @@
 export const WEATHER_DATA_RECEIVED = 'WEATHER/WEATHER_DATA_RECEIVED';
-import { getWeatherData } from './weather.gateway';
 
 export const weatherDataReceived = weatherData => {
     return {
@@ -10,9 +9,17 @@ export const weatherDataReceived = weatherData => {
     };
 };
 
-export const fetchWeatherData = () => {
+const baseUrl = 'https://5e5cf5eb97d2ea0014796f01.mockapi.io/api/v1/cities';
+
+export const getWeatherData = () => {
     return function (dispatch) {
-        getWeatherData()
+        fetch(baseUrl)
+            .then(response => {
+                if (response.ok)
+                    return response.json();
+
+                throw new Error('Failed to load');
+            })
             .then(weatherData =>
                 dispatch(weatherDataReceived(weatherData)));
     };

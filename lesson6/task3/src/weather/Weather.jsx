@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { weatherDataSelector } from './weather.selectors';
 import * as weatherActions from './weather.actions';
 
-const Weather = ({ weatherData, fetchWeatherData }) => {
+const Weather = ({ weatherData, getWeatherData }) => {
     useEffect(() => {
-        return fetchWeatherData();
+        return getWeatherData();
     }, []);
 
     return (
@@ -32,7 +32,7 @@ const Weather = ({ weatherData, fetchWeatherData }) => {
 };
 
 Weather.propTypes = {
-    fetchWeatherData: PropTypes.func.isRequired,
+    getWeatherData: PropTypes.func.isRequired,
 }
 
 const mapState = state => {
@@ -42,7 +42,7 @@ const mapState = state => {
 };
 
 const mapDispatch = {
-    fetchWeatherData: weatherActions.fetchWeatherData,
+    getWeatherData: weatherActions.getWeatherData,
 }
 
 
